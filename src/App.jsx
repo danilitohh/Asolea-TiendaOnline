@@ -376,6 +376,8 @@ function App() {
       return;
     }
 
+    setCartOpen(false);
+    setToast("");
     setCheckoutOpen(true);
   }
 
@@ -781,7 +783,10 @@ function App() {
         ) : null}
       </AnimatePresence>
 
-      <aside className={`cart-drawer ${cartOpen ? "is-open" : ""}`} aria-hidden={!cartOpen}>
+      <aside
+        className={`cart-drawer ${cartOpen ? "is-open" : ""} ${checkoutOpen ? "is-checkout-hidden" : ""}`}
+        aria-hidden={!cartOpen}
+      >
         <div className="drawer__header">
           <div>
             <span className="eyebrow">Carrito</span>
