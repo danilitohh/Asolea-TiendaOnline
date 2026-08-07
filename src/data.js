@@ -1,3 +1,17 @@
+import heroSunset from "../assets/hero-sunset.png";
+import categoryBikinis from "../assets/category-bikinis.png";
+import categoryEnterizos from "../assets/category-enterizos.png";
+import categoryPareos from "../assets/category-pareos.png";
+import categoryAccessories from "../assets/category-accessories.png";
+
+export const ASOLEA_ASSETS = {
+  hero: heroSunset,
+  bikinis: categoryBikinis,
+  enterizos: categoryEnterizos,
+  pareos: categoryPareos,
+  accessories: categoryAccessories,
+};
+
 export const CONFIG = {
   brandName: "Asolea",
   whatsappNumber: (import.meta.env.VITE_ASOLEA_WHATSAPP || "").replace(/\D/g, ""),
@@ -22,32 +36,32 @@ export const CATEGORY_TILES = [
     filter: "Todos",
     eyebrow: "Todo",
     title: "Ver colección completa",
-    image: "/assets/hero-sunset.png",
+    image: ASOLEA_ASSETS.hero,
     wide: true,
   },
   {
     filter: "Bikinis",
     eyebrow: "Bikinis",
-    title: "Silhuetas suaves y luminosas",
-    image: "/assets/category-bikinis.png",
+    title: "Siluetas suaves y luminosas",
+    image: ASOLEA_ASSETS.bikinis,
   },
   {
     filter: "Enterizos",
     eyebrow: "Enterizos",
     title: "Elegancia que se siente fácil",
-    image: "/assets/category-enterizos.png",
+    image: ASOLEA_ASSETS.enterizos,
   },
   {
     filter: "Pareos",
     eyebrow: "Pareos",
     title: "Los asoleadores para completar el look",
-    image: "/assets/category-pareos.png",
+    image: ASOLEA_ASSETS.pareos,
   },
   {
     filter: "Accesorios",
     eyebrow: "Próximamente",
     title: "Resort Wear y accesorios",
-    image: "/assets/category-accessories.png",
+    image: ASOLEA_ASSETS.accessories,
   },
 ];
 
@@ -78,7 +92,7 @@ export const PRODUCTS = [
       "Un bikini limpio y luminoso, pensado para abrir la colección con una sensación suave, fresca y sofisticada.",
     colors: ["Marfil", "Arena", "Coral"],
     sizes: ["S", "M", "L"],
-    images: ["/assets/category-bikinis.png", "/assets/hero-sunset.png", "/assets/category-pareos.png"],
+    images: [ASOLEA_ASSETS.bikinis, ASOLEA_ASSETS.hero, ASOLEA_ASSETS.pareos],
     featured: true,
     fresh: true,
   },
@@ -92,7 +106,7 @@ export const PRODUCTS = [
     description: "Una versión con un acento más cálido, ideal para una estética de atardecer con toque de coral.",
     colors: ["Coral", "Arena"],
     sizes: ["S", "M", "L"],
-    images: ["/assets/category-bikinis.png", "/assets/category-accessories.png", "/assets/hero-sunset.png"],
+    images: [ASOLEA_ASSETS.bikinis, ASOLEA_ASSETS.accessories, ASOLEA_ASSETS.hero],
     featured: true,
     fresh: true,
   },
@@ -107,7 +121,7 @@ export const PRODUCTS = [
       "Una silueta atemporal con una lectura más relajada, pensada para mezclar minimalismo y elegancia.",
     colors: ["Marfil", "Chocolate"],
     sizes: ["S", "M", "L"],
-    images: ["/assets/category-bikinis.png", "/assets/hero-sunset.png", "/assets/category-pareos.png"],
+    images: [ASOLEA_ASSETS.bikinis, ASOLEA_ASSETS.hero, ASOLEA_ASSETS.pareos],
     featured: true,
     fresh: false,
   },
@@ -121,7 +135,7 @@ export const PRODUCTS = [
     description: "Un enterizo elegante con líneas limpias y una presencia serena para resort, playa o piscina.",
     colors: ["Marfil", "Arena", "Azul océano"],
     sizes: ["S", "M", "L"],
-    images: ["/assets/category-enterizos.png", "/assets/hero-sunset.png", "/assets/category-accessories.png"],
+    images: [ASOLEA_ASSETS.enterizos, ASOLEA_ASSETS.hero, ASOLEA_ASSETS.accessories],
     featured: true,
     fresh: true,
   },
@@ -136,7 +150,7 @@ export const PRODUCTS = [
       "Una pieza más profunda y elegante, ideal para quienes buscan una presencia sobria y muy sofisticada.",
     colors: ["Azul océano", "Chocolate"],
     sizes: ["S", "M", "L"],
-    images: ["/assets/category-enterizos.png", "/assets/category-accessories.png", "/assets/hero-sunset.png"],
+    images: [ASOLEA_ASSETS.enterizos, ASOLEA_ASSETS.accessories, ASOLEA_ASSETS.hero],
     featured: false,
     fresh: true,
   },
@@ -151,7 +165,7 @@ export const PRODUCTS = [
       "Suave, depurado y muy fácil de llevar, con una lectura cálida y minimalista para el día a día del verano.",
     colors: ["Arena", "Marfil"],
     sizes: ["S", "M", "L"],
-    images: ["/assets/category-enterizos.png", "/assets/hero-sunset.png", "/assets/category-pareos.png"],
+    images: [ASOLEA_ASSETS.enterizos, ASOLEA_ASSETS.hero, ASOLEA_ASSETS.pareos],
     featured: false,
     fresh: false,
   },
@@ -166,7 +180,7 @@ export const PRODUCTS = [
       "Un pareo liviano y versátil que suma movimiento, textura y una sensación muy resort a cualquier look.",
     colors: ["Coral atardecer", "Arena"],
     sizes: ["Única"],
-    images: ["/assets/category-pareos.png", "/assets/hero-sunset.png", "/assets/category-accessories.png"],
+    images: [ASOLEA_ASSETS.pareos, ASOLEA_ASSETS.hero, ASOLEA_ASSETS.accessories],
     featured: true,
     fresh: true,
   },
@@ -180,7 +194,7 @@ export const PRODUCTS = [
     description: "Una versión luminosa para acompañar bikinis y enterizos con un punto de color atardecer.",
     colors: ["Coral", "Marfil"],
     sizes: ["Única"],
-    images: ["/assets/category-pareos.png", "/assets/hero-sunset.png", "/assets/category-bikinis.png"],
+    images: [ASOLEA_ASSETS.pareos, ASOLEA_ASSETS.hero, ASOLEA_ASSETS.bikinis],
     featured: false,
     fresh: true,
   },
@@ -195,7 +209,7 @@ export const PRODUCTS = [
       "La próxima cápsula de accesorios y resort wear de Asolea, inspirada en texturas naturales y acabados suaves.",
     colors: ["Marfil", "Arena", "Chocolate"],
     sizes: [],
-    images: ["/assets/category-accessories.png", "/assets/category-pareos.png", "/assets/hero-sunset.png"],
+    images: [ASOLEA_ASSETS.accessories, ASOLEA_ASSETS.pareos, ASOLEA_ASSETS.hero],
     featured: false,
     fresh: false,
   },
@@ -228,32 +242,32 @@ export const INSTAGRAM_POSTS = [
   {
     title: "Colección marfil",
     caption: "Editorial de inicio de temporada",
-    image: "/assets/category-bikinis.png",
+    image: ASOLEA_ASSETS.bikinis,
   },
   {
     title: "Atardecer",
     caption: "Texturas cálidas y suaves",
-    image: "/assets/hero-sunset.png",
+    image: ASOLEA_ASSETS.hero,
   },
   {
     title: "Enterizos",
     caption: "Siluetas limpias",
-    image: "/assets/category-enterizos.png",
+    image: ASOLEA_ASSETS.enterizos,
   },
   {
     title: "Pareos",
     caption: "Movimiento ligero",
-    image: "/assets/category-pareos.png",
+    image: ASOLEA_ASSETS.pareos,
   },
   {
     title: "Accesorios",
     caption: "Lo que viene después",
-    image: "/assets/category-accessories.png",
+    image: ASOLEA_ASSETS.accessories,
   },
   {
     title: "Resort edit",
     caption: "Vacaciones en clave Asolea",
-    image: "/assets/category-pareos.png",
+    image: ASOLEA_ASSETS.pareos,
   },
 ];
 

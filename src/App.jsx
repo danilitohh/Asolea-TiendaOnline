@@ -6,6 +6,7 @@ import {
   Copy,
   ExternalLink,
   Mail,
+  Menu,
   MessageCircle,
   Minus,
   Plus,
@@ -23,6 +24,7 @@ import {
   FAQS,
   FILTERS,
   HERO_NOTES,
+  ASOLEA_ASSETS,
   INSTAGRAM_POSTS,
   NEW_COLLECTION_IDS,
   PRODUCTS,
@@ -158,6 +160,7 @@ function App() {
   const [productModal, setProductModal] = useState(INITIAL_PRODUCT_MODAL);
   const [checkoutForm, setCheckoutForm] = useState(INITIAL_CHECKOUT_FORM);
   const [toast, setToast] = useState("");
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   const productsById = useMemo(() => new Map(PRODUCTS.map((product) => [product.id, product])), []);
 
@@ -211,6 +214,19 @@ function App() {
 
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
   }, [cart]);
+
+  useEffect(() => {
+    const targetId = window.location.hash.replace("#", "");
+    if (!targetId) {
+      return;
+    }
+
+    const frame = window.requestAnimationFrame(() => {
+      document.getElementById(targetId)?.scrollIntoView({ behavior: "auto", block: "start" });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, []);
 
   useEffect(() => {
     if (typeof document === "undefined") {
@@ -401,6 +417,10 @@ function App() {
     scrollToSection("shop");
   }
 
+  function handleNavClick() {
+    setMobileNavOpen(false);
+  }
+
   return (
     <div className="page-shell">
       <header className="site-header">
@@ -411,12 +431,24 @@ function App() {
           <span className="brand-subtitle">Colección resort</span>
         </div>
 
-        <nav className="site-nav" aria-label="Navegación principal">
-          <a href="#inicio">Inicio</a>
-          <a href="#tienda">Tienda</a>
-          <a href="#nosotros">Nosotros</a>
-          <a href="#preguntas">Preguntas frecuentes</a>
-          <a href="#instagram">Instagram</a>
+        <button
+          className="icon-button site-header__menu-toggle"
+          type="button"
+          onClick={() => setMobileNavOpen((current) => !current)}
+          aria-label={mobileNavOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={mobileNavOpen}
+        >
+          <span className="icon-slot" aria-hidden="true">
+            {mobileNavOpen ? <X /> : <Menu />}
+          </span>
+        </button>
+
+        <nav className={`site-nav ${mobileNavOpen ? "is-open" : ""}`} aria-label="Navegación principal">
+          <a href="#inicio" onClick={handleNavClick}>Inicio</a>
+          <a href="#tienda" onClick={handleNavClick}>Tienda</a>
+          <a href="#nosotros" onClick={handleNavClick}>Nosotros</a>
+          <a href="#preguntas" onClick={handleNavClick}>Preguntas frecuentes</a>
+          <a href="#instagram" onClick={handleNavClick}>Instagram</a>
         </nav>
 
         <button className="icon-button cart-launch" type="button" onClick={openCart} aria-label="Abrir carrito">
@@ -433,23 +465,21 @@ function App() {
         <section className="hero" id="inicio">
           <img
             className="hero__image"
-            src="/assets/hero-sunset.png"
+            src={ASOLEA_ASSETS.hero}
             alt="Escena editorial de Asolea junto al mar al atardecer"
           />
           <div className="hero__overlay" aria-hidden="true" />
 
           <div className="hero__content">
-            <AnimatedContent direction="vertical" distance={36} duration={680} animateOpacity>
-              <div>
-                <span className="eyebrow">Resort luxury swimwear</span>
-                <h1>Asolea</h1>
-                <p className="hero__lead">
-                  Descubre una colección diseñada para acompañarte en cada viaje, cada atardecer y cada instante bajo
-                  el sol. Piezas elegantes, versátiles y atemporales, creadas para mujeres que disfrutan el verano con
-                  confianza, estilo y autenticidad.
-                </p>
-              </div>
-            </AnimatedContent>
+            <div className="hero__copy">
+              <span className="eyebrow">Resort luxury swimwear</span>
+              <h1>Asolea</h1>
+              <p className="hero__lead">
+                Descubre una colección diseñada para acompañarte en cada viaje, cada atardecer y cada instante bajo
+                el sol. Piezas elegantes, versátiles y atemporales, creadas para mujeres que disfrutan el verano con
+                confianza, estilo y autenticidad.
+              </p>
+            </div>
 
             <div className="hero__actions">
               <ClickSpark sparkColor="#c7a46a" sparkCount={12} sparkRadius={28} duration={420}>
@@ -500,7 +530,7 @@ function App() {
                     type="button"
                     onClick={() => selectCategory(tile.filter)}
                   >
-                    <img src={tile.image} alt="" aria-hidden="true" />
+                    <img src={tile.image} alt="" aria-hidden="true" loading="lazy" />
                     <span className="category-tile__overlay">
                       <span className="category-tile__eyebrow">{tile.eyebrow}</span>
                       <strong>{tile.title}</strong>
@@ -540,8 +570,9 @@ function App() {
             <div className="collection-layout__visual">
               <img
                 className="collection-layout__image"
-                src="/assets/category-enterizos.png"
+                src={ASOLEA_ASSETS.enterizos}
                 alt="Nueva colección Asolea en una piscina infinita"
+                loading="lazy"
               />
             </div>
 
@@ -634,8 +665,9 @@ function App() {
             <div className="about-layout__visual">
               <img
                 className="about-layout__image"
-                src="/assets/category-pareos.png"
+                src={ASOLEA_ASSETS.pareos}
                 alt="Asolea en una terraza frente al mar durante el atardecer"
+                loading="lazy"
               />
             </div>
           </div>
@@ -690,7 +722,7 @@ function App() {
               <div className="instagram-grid" id="instagram-grid" aria-live="polite">
                 {INSTAGRAM_POSTS.map((post) => (
                   <article className="instagram-card" key={post.title}>
-                    <img src={post.image} alt={post.title} />
+                    <img src={post.image} alt={post.title} loading="lazy" />
                     <div className="instagram-card__overlay">
                       <strong>{post.title}</strong>
                       <span>{post.caption}</span>
@@ -771,7 +803,7 @@ function App() {
           ) : (
             cartItems.map((item) => (
               <div className="drawer-item" key={buildCartKey(item)}>
-                <img className="drawer-item__image" src={item.product.images[0]} alt={item.product.name} />
+                <img className="drawer-item__image" src={item.product.images[0]} alt={item.product.name} loading="lazy" />
 
                 <div className="drawer-item__body">
                   <h3 className="drawer-item__title">{item.product.name}</h3>
@@ -894,7 +926,7 @@ function App() {
                           onClick={() => setProductModal((current) => ({ ...current, imageIndex: index }))}
                           aria-label={`Ver foto ${index + 1} de ${selectedProduct.name}`}
                         >
-                          <img src={image} alt="" aria-hidden="true" />
+                          <img src={image} alt="" aria-hidden="true" loading="lazy" />
                         </button>
                       ))}
                     </div>
@@ -1191,7 +1223,7 @@ function ProductCard({ product, onOpen, onQuickAdd }) {
         onClick={() => onOpen(product.id)}
         aria-label={`Ver detalles de ${product.name}`}
       >
-        <img src={product.images[0]} alt={product.name} />
+        <img src={product.images[0]} alt={product.name} loading="lazy" />
         <span className="product-card__badge">
           {product.status === "soon" ? "Próximamente" : product.featured ? "Destacado" : product.availability}
         </span>

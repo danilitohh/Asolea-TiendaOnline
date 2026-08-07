@@ -3,6 +3,7 @@ dist/
 desktop*.png
 mobile*.png
 full*.png
+qa-*.png
 nosotros.png
 script.js
 *.log
