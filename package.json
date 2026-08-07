@@ -1,0 +1,40 @@
+{
+  "name": "tienda-online-asolea",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"& 'C:\\Program Files\\nodejs\\node.exe' 'node_modules/vite/bin/vite.js'\"",
+    "build": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"& 'C:\\Program Files\\nodejs\\node.exe' 'node_modules/vite/bin/vite.js' build\"",
+    "preview": "powershell -NoProfile -ExecutionPolicy Bypass -Command \"& 'C:\\Program Files\\nodejs\\node.exe' 'node_modules/vite/bin/vite.js' preview\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@appletosolutions/reactbits": "^1.0.3",
+    "@chakra-ui/react": "^3.21.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@react-three/drei": "^10.3.0",
+    "@react-three/fiber": "^9.1.2",
+    "@react-three/postprocessing": "^3.0.4",
+    "@react-three/rapier": "^2.1.0",
+    "framer-motion": "^13.0.0",
+    "gl-matrix": "^3.4.3",
+    "gsap": "^3.15.0",
+    "lucide-react": "^1.30.0",
+    "matter-js": "^0.20.0",
+    "meshline": "^3.3.1",
+    "ogl": "^1.0.11",
+    "postprocessing": "^6.37.4",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "three": "^0.177.0",
+    "three-stdlib": "^2.36.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.5",
+    "vite": "^8.2.1"
+  }
+}

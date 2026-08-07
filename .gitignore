@@ -1,0 +1,8 @@
+node_modules/
+dist/
+desktop*.png
+mobile*.png
+full*.png
+nosotros.png
+script.js
+*.log
